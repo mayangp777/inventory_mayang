@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,33 +30,39 @@
 </nav>
 
   <div class="container">
-    <h1>Tambah Data Barang</h1>
-    <br></br>
-    <form action="proses_tambah.php" method="POST">
+    <h1>Edit Data Barang</h1>
+    <br>
+    <?php
+        include '../../config/koneksi.php';
+        $id_barang=$_GET['id_barang'];
+        $query=mysqli_query($conn, "SELECT * FROM barang WHERE id_barang='$id_barang'");
+        $result=mysqli_fetch_array($query);
+    ?>
+    <form action="proses_edit.php?id_barang=<?php echo $result['id_barang']?>" method="POST">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">ID Barang</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id_barang">
+    <input type="text" class="form-control" name="id_barang"
+    value="<?php echo $result['id_barang']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Nama Barang</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" name="nama_barang">
+    <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
+    <input type="text" class="form-control" name="nama_barang"
+    value="<?php echo $result['nama_barang']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Harga</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="harga">
+    <input type="text" class="form-control" name="harga"
+    value="<?php echo $result['harga']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Stok</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="stok">
+    <input type="text" class="form-control" name="stok"
+    value="<?php echo $result['stok']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">ID Jenis</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id_jenis">
+    <input type="text" class="form-control" name="id_jenis"
+    value="<?php echo $result['id_jenis']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>

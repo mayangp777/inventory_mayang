@@ -1,16 +1,12 @@
 <?php
 
-$id_barang = $_GET['id_barang'];
-$nama_barang = $_POST['nama_barang'];
-$harga = $_POST['harga'];
-$stok = $_POST['stok'];
-$id_jenis = $_POST['id_jenis'];
-
+$id_jenis = $_GET['id_jenis'];
+$nama_jenis = $_POST['nama_jenis'];
 
 include '../../config/koneksi.php';
 $query = mysqli_query($conn,
-"UPDATE jenis SET nama_barang='$nama_barang', harga='$harga', stok='$stok', id_jenis='$id_jenis', 
-WHERE id_barang='$id_barang'");
+"UPDATE jenis SET nama_jenis='$nama_jenis' 
+WHERE id_jenis='$id_jenis'");
 
 if($query){
     echo "<script>alert('Data berhasil diedit')</script>";

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,33 +30,24 @@
 </nav>
 
   <div class="container">
-    <h1>Tambah Data Barang</h1>
-    <br></br>
-    <form action="proses_tambah.php" method="POST">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">ID Barang</label>
+    <h1>Edit Data Jenis</h1>
     <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id_barang">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Nama Barang</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputPassword1" aria-describedby="emailHelp" name="nama_barang">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Harga</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="harga">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Stok</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="stok">
-  </div>
+    <?php
+        include '../../config/koneksi.php';
+        $id_jenis=$_GET['id_jenis'];
+        $query=mysqli_query($conn, "SELECT * FROM jenis WHERE id_jenis='$id_jenis'");
+        $result=mysqli_fetch_array($query);
+    ?>
+    <form action="proses_edit.php?id_jenis=<?php echo $result['id_jenis']?>" method="POST">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">ID Jenis</label>
-    <br>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id_jenis">
+    <input type="text" class="form-control" name="id_jenis"
+    value="<?php echo $result['id_jenis']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Nama Jenis</label>
+    <input type="text" class="form-control" name="nama_jenis"
+    value="<?php echo $result['nama_jenis']?>" id="exampleInputPassword1" aria-describedby="emailHelp">
   </div>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
